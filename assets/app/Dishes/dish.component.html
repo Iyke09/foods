@@ -1,0 +1,59 @@
+<div class="w3-main w3-content" style="max-width:1600px;margin-top:83px;padding: 0px;margin-right: 0px;">
+  
+  <!-- Photo grid -->
+
+  <div class="w3-row w3-cover">
+    <div *ngFor="let dish of dishes">
+      <div class="w3-quarter">
+      <a >  
+        <div class="w3-display-container" style="border:2px solid lightgrey"> 
+        <img src="{{dish.imagePath}}" style="width:100%;height:380px"  alt="Canoeing again">
+        <div class="w3-display-left w3-display-hover w3-padding-small w3-padding-32" style="background-color: rgba(0,0,0,0.6);color: white">
+        <div class="w3-display-topright" style="top:-15px;right: 10px;">
+            <button onclick="document.getElementById('id02').style.display='block'"  
+            class="w3-green w3-circle" (click)="onAdd(dish.id)"><i class="fa fa-cart-arrow-down w3-text-white"></i></button>
+        </div>
+            <p>14/may/2016</p>
+           <a [routerLink]="['/main',dish.id]"><h2><i>{{dish.name}}</i></h2></a>
+            <small><b>{{dish.category}}</b></small>
+        </div>
+<!--         <div class="w3-white w3-padding-32 w3-display-hover w3-padding-small">
+            <p class="w3-left"><b>READMORE</b></p>
+            <p class="w3-text-green w3-right"><b>{{dish.category}}</b></p>
+        </div> -->
+        </div>
+        </a>
+      </div>
+    </div>
+  </div>
+<div id="id02" class="w3-modal" style="">
+    <div class="w3-modal-content w3-animate-zoom w3-card-8" style="width: 300px;height: 250px">
+    <header class="w3-container w3-teal"> 
+ 
+    </header>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()"
+     class="w3-padding-64 w3-padding-large">
+    <h4 class="w3-text-teal"><b>Number of Order</b></h4><hr>
+      <div class="">
+          <input type="number" class="w3-input w3-animate-input" id="email"
+          formControlName="name" placeholder="">
+      </div>
+
+
+      <div class="w3-row w3-padding-16"> 
+        <div class="w3-half">
+          <button onclick="document.getElementById('id02').style.display='none'" type="submit" class="w3-btn w3-hover-teal w3-padding-large">Submit</button>
+        </div>
+       <div class="w3-half">
+          <button onclick="document.getElementById('id02').style.display='none'" type="submit" class="w3-btn w3-hover-teal w3-padding-large">Cancel</button>
+        </div>
+      </div>
+
+    </form>
+    </div>
+</div>
+
+    
+
+<!-- End page content -->
+</div>

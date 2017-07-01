@@ -1,0 +1,110 @@
+
+<p class="w3-padding-64"></p>
+<div class="container row">
+<div class="col-sm-8 col-sm-offset-3">           
+  <table class="table table-bordered w3-card-4 w3-padding-32">
+    <thead>
+      <tr>
+         <th></th>
+        <th><b>NAME</b></th>
+        <th><b>PRICE</b></th>
+        <th><b>QUANTITY</b></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let dish of dishes">
+      <tr>
+         <td style="text-align: center;"><img src="{{dish.imagePath}}" style="width: 80px;height: 60px"></td>
+        <td>{{dish.name}}</td>
+        <td>{{dish.price}}</td>
+        <td>{{dish.quantity}}</td>
+        <td style="text-align: center;"><a href="/main/carts"><button class="btn btn-danger" (click)="Ondelete(dish.id)"><b>x</b></button></a></td>
+      </tr>
+    </tbody>
+    <tbody>
+    <tr>
+         <td></td>
+        <td></td>
+        <td></td>
+        <td><b class="w3-large">TOTAL :</b></td>
+        <td style="text-align: center;"><button class="btn btn-success"><b>${{total}}</b></button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button onclick="document.getElementById('id03').style.display='block'" 
+   class="w3-button w3-card-2 w3-dark-grey w3-block"><b>CHECKOUT</b>
+   </button>
+</div>
+
+<div id="id03" class="w3-modal" style="">
+    <div class="w3-modal-content w3-animate-zoom w3-card-8" style="width: 550px;">
+    <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+    </header>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()"
+     class="form-horizontal w3-padding-32 w3-padding-large" style="padding-bottom: 75px">
+    <h2 class="w3-text-teal"><b>Enter Payment Details</b></h2><hr>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email"><b>Card Number:</b></label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="email"
+          formControlName="Name" style="border-radius: 0px;">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email"><b>Name on Card:</b></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="email" formControlName="category" style="border-radius: 0px;">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd"><b>Expire Date:</b></label>
+        <div class="col-sm-5"> 
+
+		  <select class="form-control" id="sel1" style="border-radius: 0px;">
+		    <option>Month</option>
+		    <option>2</option>
+		    <option>3</option>
+		    <option>4</option>
+		  </select>
+
+        </div>
+        <div class="col-sm-5"> 
+
+		  <select class="form-control" id="sel1" style="border-radius: 0px;">
+		    <option>Year</option>
+		    <option>2</option>
+		    <option>3</option>
+		    <option>4</option>
+		  </select>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd"><b>CVV Number:</b></label>
+        <div class="col-sm-10"> 
+          <input type="number" class="form-control" id="pwd" formControlName="price" style="border-radius:0px;">
+        </div>
+      </div>
+       <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd"><b>Total Amount:</b></label>
+        <div class="col-sm-10"> 
+          <input type="number" value="{{total}}" class="form-control" id="pwd" formControlName="price" style="border-radius: 0px;">
+        </div>
+      </div>
+      <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="w3-button w3-green " [disabled]="!myForm.valid">Submit</button>
+
+          <button type="button" class="w3-button w3-red ">Cancel</button>
+          </div>
+
+
+    </form>
+    </div>
+</div>
+
+
+

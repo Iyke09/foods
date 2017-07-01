@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <title>Angular Messenger</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/w3.css'/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.w3-quarter img{cursor: pointer}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+#map {
+height: 400px;
+width: 100%;
+}
+
+</style>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+<!--  <script>
+
+        var map;
+        function initMap(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(displayLocation)
+            }else{
+                alert('oops!')
+            }
+        }
+
+        function displayLocation(position){
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            var latlng = new google.maps.LatLng(latitude,longitude);
+
+            var mapOptions = {
+                center: latlng,
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            addNearByPlaces(latlng);
+
+            apiMarkerCreate(latlng);
+
+        }
+
+        function addNearByPlaces(latlng){
+            var nearByService = new google.maps.places.PlacesService(map);
+
+            console.log(google.maps.places)
+
+            var request = {
+                location:latlng,
+                radius:10939,
+                types:['restaurant']
+            };
+
+            nearByService.nearbySearch(request,searchNearby)
+        }
+
+        function searchNearby(results,status){
+            if(status === google.maps.places.PlacesServiceStatus.OK){
+                for(var i = 0;i < results.length;i++){
+                    var place = results[i];
+                    apiMarkerCreate(place.geometry.location,place);
+                }
+            }
+        }
+
+        function apiMarkerCreate(latlng,placeResult){
+            var mapOptions = {
+                position: latlng,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                clickable:true
+            };
+
+            var marker = new google.maps.Marker(mapOptions);
+
+            if(placeResult){
+                var content = placeResult.name;
+                windowInfoCreate(marker,latlng,content);
+            }else{
+                var content = 'you are here' + latlng.lat() + ' ' + latlng.lng();
+                windowInfoCreate(marker,latlng,content)
+            }
+        }
+
+        function windowInfoCreate(marker,latlng,content){
+            var infoWindowOptions = {
+                content: content,
+                position:latlng
+            };
+
+            var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+            google.maps.event.addListener(marker,'click',function(){
+                infoWindow.open(map); 
+            });
+        }
+    </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUFz9zFDwCWyS6ADM9E1YrsQ3vS3l4h3k&libraries=places&callback=initMap">
+    </script> -->
+</head>
+<body>
+<my-app>Loading...</my-app>
+
+
+
+<!-- <script >
+	var mapOptions = {
+    center: new google.maps.LatLng(6.43616,3.41647),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+
+new google.maps.Map(document.getElementById('map'), mapOptions);
+</script> -->
+
+
+
+
+
+<script>
+// Script to open and close sidebar
+function ope() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+
+
+</script>
+
+
+
+<script src="/js/app/bundle.js"></script>
+
+</body>
+</html>
